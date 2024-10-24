@@ -2,7 +2,7 @@
 
 __osc_prompt() {
     # Git has a precedence
-    if [ -d .git ] ; then
+    if git rev-parse --quiet --git-dir >/dev/null 2>&1 ; then
         # Test for the existence of bash function
         declare -F __git_ps1 >/dev/null && printf "%s" "$(__git_ps1 "$@")"
         return
